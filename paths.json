@@ -1,0 +1,27 @@
+{
+    "cpu": {
+        "power": 52,
+        "temperature": 71,
+        "clock": 64,
+        "load": 75
+    },
+    "gpu": {
+        "power": 101,
+        "temperature": 106,
+        "clock": 103,
+        "load": 109,
+        "fan": 126
+    },
+    "ram": {
+        "load": 92,
+        "used": 95
+    },
+    "motherboard": {
+        "fan_1": 25,
+        "fan_2": 26
+    },
+    "fans": {
+        "fan_1": 25,
+        "fan_2": 26
+    }
+}

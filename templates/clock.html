@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <style>
+        @font-face {
+            font-family: 'Consolas';
+            src: url('/static/fonts/CONSOLAB.ttf') format('truetype');
+        }
+        
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Stack the button and clock vertically */
+    background-color: #000;
+    color: white;
+    font-family: 'Consolas', monospace;
+}
+
+.clock {
+    display: flex;
+    align-items: center;
+    font-size: 15vh; /* Adjust font size to be responsive */
+    transform: rotate(90deg); /* Rotate the clock 90 degrees clockwise */
+}
+
+.time-segment {
+    position: relative;
+    overflow: hidden; /* Ensure the overflow is hidden for the animations */
+}
+
+.colon {
+    margin: 0 10px; /* Add some spacing around the colons */
+}
+
+.time-segment span,
+.am-pm {
+    display: inline-block;
+    transition: transform 0.15s ease-in; /* Initial transition for down movement */
+}
+
+.am-pm {
+    margin-left: 5vh;
+    font-size: 10vh; /* Adjust size of AM/PM indicator */
+}
+
+#fullscreen-btn {
+    position: absolute; /* Position the button at the top left corner */
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 10px; /* Rounded corners */
+    cursor: pointer;
+    z-index: 10; /* Ensure the button is above other elements */
+}
+
+#fullscreen-btn:hover {
+    background-color: #555; /* Button hover effect */
+}
+
+    </style>
+</head>
+<body>
+    <button id="fullscreen-btn">Go Fullscreen</button>
+<div class="clock">
+    <div class="time-segment" id="hours">
+        <span>00</span>
+    </div>
+    <span class="colon">:</span>
+    <div class="time-segment" id="minutes">
+        <span>00</span>
+    </div>
+    <span class="colon">:</span>
+    <div class="time-segment" id="seconds">
+        <span>00</span>
+    </div>
+    <span class="am-pm" id="ampm">AM</span>
+</div>
+    <script>
+        function updateClock() {
+    const now = new Date();
+    let hours = now.getHours();
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+
+    // Convert to 12-hour format
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12; // Convert to 12-hour format
+    hours = hours ? String(hours).padStart(2, '0') : '12'; // Adjust for 0 hour
+
+    updateDigit('hours', hours);
+    updateDigit('minutes', minutes);
+    updateDigit('seconds', seconds);
+    updateAMPM(ampm);
+}
+
+function updateDigit(id, newValue) {
+    const digitElement = document.getElementById(id);
+    const span = digitElement.querySelector('span');
+    const currentValue = span.innerText;
+
+    if (currentValue !== newValue) {
+        // Step 1: Move down by 100% with ease-in
+        span.style.transform = 'translateY(100%)';
+
+        // Wait for the first animation to finish
+        setTimeout(() => {
+            // Step 2: Instantly update the digit and move up by 200%
+            span.innerText = newValue; // Update the digit
+            span.style.transition = 'none'; // Disable transition for instant movement
+            span.style.transform = 'translateY(-200%)';
+
+            // Wait for a moment before moving down
+            setTimeout(() => {
+                // Step 3: Move down by 100% with ease-out
+                span.style.transition = 'transform 0.15s ease-out'; // Re-enable transition
+                span.style.transform = 'translateY(0)'; // Move down to original position
+            }, 50); // Small delay to see the move up
+        }, 150); // Time for the first downward move (now 0.15s)
+    }
+}
+
+function updateAMPM(newValue) {
+    const ampmElement = document.getElementById('ampm');
+    const currentValue = ampmElement.innerText;
+
+    if (currentValue !== newValue) {
+        // Step 1: Move down by 100% with ease-in
+        ampmElement.style.transform = 'translateY(100%)';
+
+        // Wait for the first animation to finish
+        setTimeout(() => {
+            // Step 2: Instantly update the AM/PM and move up by 200%
+            ampmElement.innerText = newValue; // Update the AM/PM
+            ampmElement.style.transition = 'none'; // Disable transition for instant movement
+            ampmElement.style.transform = 'translateY(-200%)';
+
+            // Wait for a moment before moving down
+            setTimeout(() => {
+                // Step 3: Move down by 100% with ease-out
+                ampmElement.style.transition = 'transform 0.15s ease-out'; // Re-enable transition
+                ampmElement.style.transform = 'translateY(0)'; // Move down to original position
+            }, 50); // Small delay to see the move up
+        }, 150); // Time for the first downward move (now 0.15s)
+    }
+}
+
+function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+    } else {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        }
+    }
+}
+
+function updateFullscreenButton() {
+    const btn = document.getElementById('fullscreen-btn');
+    if (document.fullscreenElement) {
+        btn.style.display = 'none'; // Hide the button in fullscreen
+    } else {
+        btn.style.display = 'block'; // Show the button when not in fullscreen
+    }
+}
+
+// Add event listeners for fullscreen changes
+document.addEventListener('fullscreenchange', updateFullscreenButton);
+document.addEventListener('webkitfullscreenchange', updateFullscreenButton); // For Safari
+document.addEventListener('mozfullscreenchange', updateFullscreenButton); // For Firefox
+document.addEventListener('MSFullscreenChange', updateFullscreenButton); // For IE/Edge
+
+document.getElementById('fullscreen-btn').addEventListener('click', toggleFullscreen);
+
+setInterval(updateClock, 1000);
+updateClock(); // Initial call to set the time immediately
+
+    </script>
+</body>
+</html>

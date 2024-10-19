@@ -1,0 +1,204 @@
+@font-face {
+    font-family: 'Consolas';
+    src: url('/static/fonts/CONSOLAB.ttf') format('truetype');
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+.monitor {
+    position: absolute;
+    top: 45%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 20px;
+    padding: 0;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+}
+
+.gauge {
+    transform: rotate(90deg);
+    position: relative;
+    width: 140px;
+    height: 140px;
+    overflow: hidden;
+}
+
+.gauge-outer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(
+        #9900ff 0deg, 
+        #9900ff calc(270deg * (var(--value, 0) / 100)), 
+        #00000000 calc(270deg * (var(--value, 0) / 100)) 270deg
+    );
+    transform: rotate(-135deg);
+    overflow: hidden;
+}
+
+.gauge-cover {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    background-color: black;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(135deg);
+}
+
+.gauge-background {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(
+        #222 0deg, 
+        #222 calc(270deg * (var(--value, 100) / 100)), 
+        #00000000 calc(270deg * (var(--value, 100) / 100)) 270deg
+    );
+    transform: rotate(-135deg);
+    overflow: hidden;
+}
+
+.gauge-name {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 1000;
+    color: white;
+    font-size: 23px;
+}
+
+.gauge-value {
+    font-weight: 500;
+    line-height: 30px;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column; /* Stack value and unit vertically */
+    justify-content: center;
+    align-items: center;
+    font-family: 'Consolas', monospace;
+}
+
+.gauge-value span:first-child {
+    font-size: 40px; /* Adjust for value */
+}
+
+.gauge-value span:last-child {
+    font-size: 30px; /* Adjust for unit */
+}
+
+#fullscreen-btn {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 10px; /* Rounded corners */
+    cursor: pointer;
+    z-index: 10; /* Ensure the button is above other elements */
+}
+
+#fullscreen-btn:hover {
+    background-color: #555; /* Button hover effect */
+}
+
+.error-container {
+    position: absolute;
+    top: 45%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 20px;
+    padding: 20px;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+    backdrop-filter: blur(5px);
+    background-color: #00000088;
+}
+
+.error-message {
+    color: white;
+    transform: rotate(90deg);
+    text-align: center;
+    font-size: 80px;
+    font-family: 'Consolas', monospace;
+}
+
+#error-message {
+    display: none;
+}
+
+#blackoutElement {
+    display: block;
+    opacity: 0;
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    z-index: 9999;
+    transition: opacity 0.5s ease-in-out; /* Transition for opacity */
+}
+
+.media-buttons{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    top: 0;
+    left: 0;
+    width: 90px;
+    height: 45vh;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+}
+
+.media-buttons button {
+    transform: rotate(90deg);
+    width: 60px;
+    height: 60px;
+    background-color: #9900ff;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 40px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}

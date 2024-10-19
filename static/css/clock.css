@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.clock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    font-size: 10vh; /* Adjust font size to be responsive */
+    height: 40vh;
+    padding: 0 20px;
+    font-weight: normal;
+    font-family: 'Consolas', monospace;
+    flex-wrap: wrap;
+}
+
+.time-segment {
+    position: relative;
+    overflow: hidden; /* Ensure the overflow is hidden for the animations */
+    transform: rotate(90deg);
+}
+
+.colon {
+    margin: 0 10px; /* Add some spacing around the colons */
+    margin: 0;
+    height: fit-content;
+    width: fit-content;
+    text-align: center;
+    /* transform: rotate(90deg); */
+}
+
+.time-segment span,
+.am-pm {
+    display: inline-block;
+}
+
+.am-pm {
+    /* margin-left: 5vh; */
+    margin-top: 5vh;
+    font-size: 5vh; /* Adjust size of AM/PM indicator */
+    transform: rotate(90deg);
+}
