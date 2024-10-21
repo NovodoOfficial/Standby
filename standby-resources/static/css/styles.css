@@ -148,16 +148,16 @@ body {
     background-color: #00000088;
 }
 
+#error-message {
+    display: none;
+}
+
 .error-message {
     color: white;
     transform: rotate(90deg);
     text-align: center;
     font-size: 80px;
     font-family: 'Consolas', monospace;
-}
-
-#error-message {
-    display: none;
 }
 
 #blackoutElement {
