@@ -17,7 +17,6 @@ def create_scheduled_task():
     try:
         # Execute the command
         os.system(command)
-        print(f'Task "{task_name}" created successfully.')
     except Exception as e:
         print(f'Error creating task: {e}')
         print()
