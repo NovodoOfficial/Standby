@@ -4,6 +4,8 @@ import requests
 import pyautogui
 import socket
 
+import os # temp
+
 app = Flask(__name__)
 
 def get_all_device_values(data, paths):
@@ -41,9 +43,10 @@ def home():
 def get_device_data():
     response = requests.get('http://127.0.0.1:8085/data.json')
     data = response.json()
-    paths = load_json('paths.json')
 
+    paths = load_json(os.path.join('standby-resources', 'paths.json'))
     result = get_all_device_values(data, paths)
+
     return jsonify(result)
 
 @app.route('/playpause')
