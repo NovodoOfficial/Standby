@@ -19,6 +19,7 @@ def install_requirements(requirements_file='requirements.txt'):
             package = package.strip()
             if package:  # Skip empty lines
                 if not is_package_installed(package):
+                    print("#" * 10)
                     print(f"Installing {package}...")
                     subprocess.check_call([sys.executable, '-m', 'pip', 'install', package])
                 else:

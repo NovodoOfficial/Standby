@@ -10,14 +10,19 @@ def run_script(script_name):
         return None
 
 def main():
+    print("=" * 10)
+    print("Setting up...")
+    print("=" * 10)
     print("Installing requirements...")
     run_script('requirements.py')
 
     time.sleep(5)
 
+    print("=" * 10)
     print("Creating startup task...")
     run_script('task.py')
 
+    print("=" * 10)
     print("Setup complete")
 
 if __name__ == "__main__":
