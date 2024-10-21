@@ -9,22 +9,31 @@ body {
     background-color: black;
     font-family: Arial, Helvetica, sans-serif;
     color: white;
-    max-width: 116px;
+    overflow: auto;
 }
 
 .monitor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+    gap: 20px;
     position: absolute;
     top: 45%;
     bottom: 0;
     left: 0;
     right: 0;
+    padding: 0;
+}
+
+.hardware-section {
     display: flex;
     justify-content: center;
     align-items: center;
     align-content: center;
     gap: 20px;
     padding: 0;
-    flex-wrap: wrap;
     flex-shrink: 0;
 }
 

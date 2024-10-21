@@ -14,103 +14,109 @@
     <div id="blackoutElement"></div>
 
     <div class="monitor">
-        <!-- CPU Power Usage Gauge -->
-        <div class="gauge">
-            <div class="gauge-outer">
-                <div class="gauge-cover">
-                    <span class="gauge-value" data-name="cpu power">0W</span>
+        <div class="cpu-section hardware-section">
+            <!-- CPU Power Usage Gauge -->
+            <div class="gauge">
+                <div class="gauge-outer">
+                    <div class="gauge-cover">
+                        <span class="gauge-value" data-name="cpu power">0W</span>
+                    </div>
                 </div>
+                <span class="gauge-name">CPU W</span>
+                <div class="gauge-background"></div>
             </div>
-            <span class="gauge-name">CPU W</span>
-            <div class="gauge-background"></div>
+
+            <!-- CPU Temperature Gauge -->
+            <div class="gauge">
+                <div class="gauge-outer">
+                    <div class="gauge-cover">
+                        <span class="gauge-value" data-name="cpu temperature">0°C</span>
+                    </div>
+                </div>
+                <span class="gauge-name">CPU °</span>
+                <div class="gauge-background"></div>
+            </div>
+
+            <!-- CPU Usage Gauge -->
+            <div class="gauge">
+                <div class="gauge-outer">
+                    <div class="gauge-cover">
+                        <span class="gauge-value" data-name="cpu load">0%</span>
+                    </div>
+                </div>
+                <span class="gauge-name">CPU %</span>
+                <div class="gauge-background"></div>
+            </div>
         </div>
 
-        <!-- CPU Temperature Gauge -->
-        <div class="gauge">
-            <div class="gauge-outer">
-                <div class="gauge-cover">
-                    <span class="gauge-value" data-name="cpu temperature">0°C</span>
+        <div class="gpu-section hardware-section">
+            <!-- GPU Power Usage Gauge -->
+            <div class="gauge">
+                <div class="gauge-outer">
+                    <div class="gauge-cover">
+                        <span class="gauge-value" data-name="gpu power">0W</span>
+                    </div>
                 </div>
+                <span class="gauge-name">GPU W</span>
+                <div class="gauge-background"></div>
             </div>
-            <span class="gauge-name">CPU °</span>
-            <div class="gauge-background"></div>
+
+            <!-- GPU Temperature Gauge -->
+            <div class="gauge">
+                <div class="gauge-outer">
+                    <div class="gauge-cover">
+                        <span class="gauge-value" data-name="gpu temperature">0°C</span>
+                    </div>
+                </div>
+                <span class="gauge-name">GPU °</span>
+                <div class="gauge-background"></div>
+            </div>
+
+            <!-- GPU Usage Gauge -->
+            <div class="gauge">
+                <div class="gauge-outer">
+                    <div class="gauge-cover">
+                        <span class="gauge-value" data-name="gpu load">0%</span>
+                    </div>
+                </div>
+                <span class="gauge-name">GPU %</span>
+                <div class="gauge-background"></div>
+            </div>
         </div>
 
-        <!-- CPU Usage Gauge -->
-        <div class="gauge">
-            <div class="gauge-outer">
-                <div class="gauge-cover">
-                    <span class="gauge-value" data-name="cpu load">0%</span>
+        <div class="other-section hardware-section">
+            <!-- Fan 2 Speed Gauge -->
+            <div class="gauge">
+                <div class="gauge-outer">
+                    <div class="gauge-cover">
+                        <span class="gauge-value" data-name="fans fan_2">0 RPM</span>
+                    </div>
                 </div>
+                <span class="gauge-name">Fan 2</span>
+                <div class="gauge-background"></div>
             </div>
-            <span class="gauge-name">CPU %</span>
-            <div class="gauge-background"></div>
-        </div>
 
-        <!-- GPU Power Usage Gauge -->
-        <div class="gauge">
-            <div class="gauge-outer">
-                <div class="gauge-cover">
-                    <span class="gauge-value" data-name="gpu power">0W</span>
+            <!-- Fan 1 Speed Gauge -->
+            <div class="gauge">
+                <div class="gauge-outer">
+                    <div class="gauge-cover">
+                        <span class="gauge-value" data-name="fans fan_1">0 RPM</span>
+                    </div>
                 </div>
+                <span class="gauge-name">Fan 1</span>
+                <div class="gauge-background"></div>
             </div>
-            <span class="gauge-name">GPU W</span>
-            <div class="gauge-background"></div>
-        </div>
 
-        <!-- GPU Temperature Gauge -->
-        <div class="gauge">
-            <div class="gauge-outer">
-                <div class="gauge-cover">
-                    <span class="gauge-value" data-name="gpu temperature">0°C</span>
+            <!-- RAM Usage Gauge -->
+            <div class="gauge">
+                <div class="gauge-outer">
+                    <div class="gauge-cover">
+                        <span class="gauge-value" data-name="ram load">0%</span>
+                    </div>
                 </div>
+                <span class="gauge-name">RAM %</span>
+                <div class="gauge-background"></div>
             </div>
-            <span class="gauge-name">GPU °</span>
-            <div class="gauge-background"></div>
-        </div>
-
-        <!-- GPU Usage Gauge -->
-        <div class="gauge">
-            <div class="gauge-outer">
-                <div class="gauge-cover">
-                    <span class="gauge-value" data-name="gpu load">0%</span>
-                </div>
-            </div>
-            <span class="gauge-name">GPU %</span>
-            <div class="gauge-background"></div>
-        </div>
-
-        <!-- Fan 2 Speed Gauge -->
-        <div class="gauge">
-            <div class="gauge-outer">
-                <div class="gauge-cover">
-                    <span class="gauge-value" data-name="fans fan_2">0 RPM</span>
-                </div>
-            </div>
-            <span class="gauge-name">Fan 2</span>
-            <div class="gauge-background"></div>
-        </div>
-
-        <!-- Fan 1 Speed Gauge -->
-        <div class="gauge">
-            <div class="gauge-outer">
-                <div class="gauge-cover">
-                    <span class="gauge-value" data-name="fans fan_1">0 RPM</span>
-                </div>
-            </div>
-            <span class="gauge-name">Fan 1</span>
-            <div class="gauge-background"></div>
-        </div>
-
-        <!-- RAM Usage Gauge -->
-        <div class="gauge">
-            <div class="gauge-outer">
-                <div class="gauge-cover">
-                    <span class="gauge-value" data-name="ram load">0%</span>
-                </div>
-            </div>
-            <span class="gauge-name">RAM %</span>
-            <div class="gauge-background"></div>
         </div>
 
         <!-- Motherboard Sensors -->
