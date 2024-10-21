@@ -41,10 +41,16 @@ def home():
 
 @app.route('/device-data')
 def get_device_data():
+    script_path = os.path.abspath(__file__)
+
+    script_dir = os.path.dirname(script_path)
+
+    json_path = os.path.join(script_dir, 'paths.json')
+
     response = requests.get('http://127.0.0.1:8085/data.json')
     data = response.json()
 
-    paths = load_json(os.path.join('standby-resources', 'paths.json'))
+    paths = load_json(json_path)
     result = get_all_device_values(data, paths)
 
     return jsonify(result)
