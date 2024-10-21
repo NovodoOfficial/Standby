@@ -1,12 +1,7 @@
 Set WshShell = CreateObject("WScript.Shell")
 
+currentDirectory = WshShell.CurrentDirectory & "\"
 relativePath = "run.bat"
-
-currentDirectory = WshShell.CurrentDirectory
-
-If Right(currentDirectory, 1) <> "\" Then
-    currentDirectory = currentDirectory & "\"
-End If
 
 absolutePath = currentDirectory & relativePath
 
