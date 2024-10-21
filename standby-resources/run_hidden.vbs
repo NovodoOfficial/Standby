@@ -1,8 +1,8 @@
 Set WshShell = CreateObject("WScript.Shell")
 
-currentDirectory = WshShell.CurrentDirectory & "\"
+scriptDirectory = Left(WScript.ScriptFullName, InStrRev(WScript.ScriptFullName, "\"))
 relativePath = "run.bat"
 
-absolutePath = currentDirectory & relativePath
+absolutePath = scriptDirectory & relativePath
 
 WshShell.Run Chr(34) & absolutePath & Chr(34), 0, False
